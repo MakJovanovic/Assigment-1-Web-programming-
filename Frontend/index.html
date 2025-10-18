@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="Assets/css/spapp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.min.css">
+    <title>Ultimate Goalkeeping</title>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <a href="#page1" class="navbar-brand">Ultimate Goalkeeping</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="#page1" class="nav-link" id="1">Home</a></li>
+                <li class="nav-item"><a href="#page2" class="nav-link" id="2">Shop</a></li>
+                <li class="nav-item"><a href="#page3" class="nav-link" id="3">Cart</a></li>
+                <li class="nav-item"><a href="#page4" class="nav-link" id="4">Login</a></li>
+                <li class="nav-item"><a href="#page5" class="nav-link" id="5">Register</a></li>
+                <li class="nav-item"><a href="#page6" class="nav-link" id="6">Contact Us</a></li>
+                <li class="nav-item"><a href="#page7" class="nav-link" id="7">Admin</a></li>
+            </ul>
+            <button id="theme-switcher">Switch Theme</button>
+        </div>
+    </nav>
+
+    <main id="spapp" class="pageContent" role="main">
+        <section id="page1" data-load="main.html">
+            <h1>Home</h1>
+        </section>
+
+        <section id="page2" data-load="Shop.html">
+            <h1>Shop</h1>
+        </section>
+
+        <section id="page3" data-load="cart.html">
+            <h1>Cart</h1>
+        </section>
+
+        <section id="page4" data-load="login.html">
+            <h1>Login</h1>
+        </section>
+
+        <section id = "page5" data-load="register.html">
+            <h1>Register</h1>
+
+        </section>
+
+        <section id="page6" data-load="contact.html">
+            <h1>Contact Us</h1>
+        </section>
+
+        <section id="page7" data-load="admin.html">
+            <h1>Admin</h1>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Copyright &copy;2024; Designed by <span class="designer">Mak Jovanovic, Foundations of Web Development</span></p>
+    </footer>
+    
+    <script src="./Assets/Js/jquery-3.7.1.min.js"></script>
+    <script src="./Assets/Js/jquery.spapp.js"></script>
+    <script src="./Assets/Js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="./Assets/Js/cart.js"></script>
+    <script src="./Assets/Js/contact.js"></script>>
+</html>

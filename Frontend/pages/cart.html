@@ -1,0 +1,43 @@
+<div class="container">
+    <section id="cart-section">
+        <h2>Your Cart</h2>
+
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-secondary">
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+            </tbody>
+        </table>
+
+        <div id="total">
+            <p>Total: €<span id="total-amount">0.00</span></p>
+            <button id="checkout" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cartModal">
+                Proceed to Checkout
+            </button>
+        </div>
+    </section>
+
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Added to Cart</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>These are the items you have added to your cart.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
