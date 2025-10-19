@@ -108,8 +108,8 @@ $(document).ready(function() {
         view: "page7",
         onReady: function() {
             console.log("About page created!");
-            loadCSS('./Assets/Css/contact.css');
-            loadJS('./Assets/Js/contact.js', function() 
+            loadCSS('./Assets/Css/admin.css');
+            loadJS('./Assets/Js/admin.js', function() 
             
             {
                 console.log('About JS loaded');

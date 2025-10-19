@@ -1,0 +1,384 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+#admin-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#admin-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: 700;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-warning {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.btn-warning:hover {
+    background-color: #e6b800;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    background-color: #333;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-body {
+    background-color: #fff;
+}
+
+.modal-footer {
+    background-color: #f1f1f1;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-theme #admin-section {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-theme table {
+    background-color: #555;
+    color: #fff;
+}
+
+body.dark-theme th {
+    background-color: #666;
+}
+
+body.dark-theme tbody tr:nth-child(even) {
+    background-color: #444;
+}
+
+body.dark-theme tbody tr:hover {
+    background-color: #555;
+}
+
+body.dark-theme .modal-header {
+    background-color: #555;
+}
+
+body.dark-theme .modal-body {
+    background-color: #444;
+}
+
+body.dark-theme .modal-footer {
+    background-color: #555;
+}
+
+body.dark-theme input {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #777;
+}
+
+body.dark-theme input::placeholder {
+    color: #ccc;
+}
+
+#admin-section .btn-success {
+    margin-top: 20px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+} body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 2.5em;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 20px;
+}
+
+.navbar-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 20px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 1.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+#theme-switcher {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-switcher:hover {
+    background-color: #e6b800;
+    color: #fff;
+}
+
+.contact-section {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-size: 1.2em;
+}
+
+.contact-link {
+    color: #ffcc00;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.accordion-section {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.accordion {
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.4s ease;
+    font-size: 1.2em;
+}
+
+.accordion:hover,
+.accordion.active {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    border-top: none;
+    font-size: 1.1em;
+}
+
+.footer {
+    background-color: black;
+    text-align: center;
+}
+
+.footer .designer {
+    color: white;
+    font-weight: 800;
+    font-size: large;
+}
+
+.footer p {
+    color: white;
+    font-weight: 800;
+    font-size: large;
+}
+
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-theme nav {
+    background-color: #555;
+}
+
+body.dark-theme .navbar-brand,
+body.dark-theme .nav-link {
+    color: #fff;
+}
+
+body.dark-theme .nav-link:hover {
+    color: #ffcc00;
+}
+
+body.dark-theme .contact-section,
+body.dark-theme .accordion-section {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-theme .accordion {
+    background-color: #555;
+    color: #fff;
+}
+
+body.dark-theme .accordion:hover,
+body.dark-theme .accordion.active {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+body.dark-theme .panel {
+    background-color: #555;
+    color: #fff;
+}
+
+body.dark-theme .footer {
+    background-color: #555;
+}
+
+body.dark-theme .footer p,
+body.dark-theme .footer .designer {
+    color: #fff;
+}
+nav a.active {
+    font-weight: bold;
+    color: rgb(255, 238, 0); 
+}
+
+body.dark-theme .nav-link:hover {
+    color: #ffcc00;
+}
