@@ -1,0 +1,438 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav a.active {
+    font-weight: bold;
+    color: rgb(255, 238, 0); 
+}
+#navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar-brandt {
+    font-size: 2.5em;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 20px;
+}
+
+#navbar-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+#navbar-nav #nav-item {
+    margin-right: 20px;
+}
+
+#navbar-nav #nav-link {
+    color: #fff;
+    font-size: 1.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+#navbar-nav #nav-link:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+#theme-switcher {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-switcher:hover {
+    background-color: #e6b800;
+    color: #fff;
+}
+
+#cart {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#cart h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#total {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    align-items: center;
+}
+
+#total p {
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+#checkout {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#checkout:hover {
+    background-color: #ff9900;
+}
+
+#footer {
+    background-color: black;
+    text-align: center;
+}
+
+#footer #designer {
+    color: white;
+    font-weight: 800;
+    font-size: large;
+}
+
+#footer p {
+    color: white;
+    font-weight: 800;
+    font-size: large;
+}
+
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-theme nav {
+    background-color: #555;
+}
+
+body.dark-theme #navbar-brandt,
+body.dark-theme #nav-link {
+    color: #fff;
+}
+
+body.dark-theme #nav-link:hover {
+    color: #ffcc00;
+}
+
+body.dark-theme #cart-section {
+    background-color: #444;
+}
+
+body.dark-theme table {
+    background-color: #555;
+}
+
+body.dark-theme th, 
+body.dark-theme td {
+    color: #fff;
+}
+
+body.dark-theme th {
+    background-color: #666;
+}
+
+body.dark-theme tbody tr:nth-child(even) {
+    background-color: #444;
+}
+
+body.dark-theme #total {
+    color: #fff;
+}
+
+body.dark-theme #checkout {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+body.dark-theme #footer {
+    background-color: #555;
+}
+
+body.dark-theme #footer p,
+body.dark-theme #footer #designer {
+    color: #fff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 2.5em;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 20px;
+}
+
+.navbar-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 20px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 1.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+#theme-switcher,
+.orange-button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-switcher:hover,
+.orange-button:hover {
+    background-color: #e6b800;
+    color: #fff;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.why-best {
+    padding: 40px;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.why-best h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.why-best p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #333;
+}
+
+.clubs {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f1f1f1;
+}
+
+.club {
+    margin: 0 20px;
+    text-align: center;
+}
+
+.club-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.club p {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.video {
+    padding: 40px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.video-container {
+    margin-top: 20px;
+}
+
+iframe {
+    border: none;
+}
+
+.weather {
+    padding: 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.weather input {
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.weather button {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.weather button:hover {
+    background-color: #e6b800;
+}
+
+.footer {
+    background-color: black;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.footer .designer {
+    font-weight: bold;
+}
+
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-theme nav {
+    background-color: #555;
+}
+
+body.dark-theme .navbar-brand,
+body.dark-theme .nav-link {
+    color: #fff;
+}
+
+body.dark-theme .nav-link:hover {
+    color: #ffcc00;
+}
+
+body.dark-theme .why-best {
+    background-color: #444;
+}
+
+body.dark-theme .clubs {
+    background-color: #555;
+}
+
+body.dark-theme .video {
+    background-color: #444;
+}
+
+body.dark-theme .footer {
+    background-color: #555;
+}
+
+body.dark-theme .weather {
+    background-color: #444;
+}
+
+nav a.active {
+    font-weight: bold;
+    color: rgb(255, 238, 0); 
+}
+
+body.dark-theme .nav-link:hover {
+    color: #ffcc00;
+}
