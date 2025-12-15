@@ -7,16 +7,23 @@
  *     @OA\Response(
  *         response=200,
  *         description="List of all carts",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="customer_id", type="integer", example=1),
+ *                 @OA\Property(property="order_id", type="integer", example=1),
+ *                 @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *                 @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /carts', function() {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::cartService()->getAllCarts());
 });
 
@@ -35,21 +42,21 @@ Flight::route('GET /carts', function() {
  *     @OA\Response(
  *         response=200,
  *         description="Cart details",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="customer_id", type="integer", example=1),
+ *             @OA\Property(property="order_id", type="integer", example=1),
+ *             @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *             @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=404,
- *         description="Cart not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=404, description="Cart not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /carts/@id', function($id) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::cartService()->getCartById($id));
 });
 
@@ -68,16 +75,23 @@ Flight::route('GET /carts/@id', function($id) {
  *     @OA\Response(
  *         response=200,
  *         description="List of carts for the customer",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="customer_id", type="integer", example=1),
+ *                 @OA\Property(property="order_id", type="integer", example=1),
+ *                 @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *                 @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /carts/customer/@customer_id', function($customer_id) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::cartService()->getCartsByCustomer($customer_id));
 });
 
@@ -96,16 +110,23 @@ Flight::route('GET /carts/customer/@customer_id', function($customer_id) {
  *     @OA\Response(
  *         response=200,
  *         description="List of carts for the order",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="customer_id", type="integer", example=1),
+ *                 @OA\Property(property="order_id", type="integer", example=1),
+ *                 @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *                 @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /carts/order/@order_id', function($order_id) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::cartService()->getCartsByOrder($order_id));
 });
 
@@ -117,16 +138,23 @@ Flight::route('GET /carts/order/@order_id', function($order_id) {
  *     @OA\Response(
  *         response=200,
  *         description="List of active carts",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="customer_id", type="integer", example=1),
+ *                 @OA\Property(property="order_id", type="integer", example=1),
+ *                 @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *                 @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /carts/active', function() {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::cartService()->getActiveCarts());
 });
 
@@ -152,16 +180,23 @@ Flight::route('GET /carts/active', function() {
  *     @OA\Response(
  *         response=200,
  *         description="List of carts within the time range",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="customer_id", type="integer", example=1),
+ *                 @OA\Property(property="order_id", type="integer", example=1),
+ *                 @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *                 @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /carts/range/@from/@to', function($from, $to) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::cartService()->getCartsByTimeRange($from, $to));
 });
 
@@ -174,29 +209,31 @@ Flight::route('GET /carts/range/@from/@to', function($from, $to) {
  *         required=true,
  *         @OA\JsonContent(
  *             type="object",
- *             @OA\Property(property="customer_id", type="integer"),
- *             @OA\Property(property="order_id", type="integer"),
- *             @OA\Property(property="status", type="integer", description="1 for active, 0 for inactive")
+ *             required={"customer_id"},
+ *             @OA\Property(property="customer_id", type="integer", example=1),
+ *             @OA\Property(property="order_id", type="integer", example=1),
+ *             @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *             @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
  *         )
  *     ),
  *     @OA\Response(
  *         response=200,
  *         description="Cart created successfully",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="customer_id", type="integer", example=1),
+ *             @OA\Property(property="order_id", type="integer", example=1),
+ *             @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *             @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=400,
- *         description="Invalid input",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=400, description="Invalid input"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('POST /carts', function() {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     $data = Flight::request()->data->getData();
     Flight::json(Flight::cartService()->addCart($data));
 });
@@ -217,29 +254,30 @@ Flight::route('POST /carts', function() {
  *         required=true,
  *         @OA\JsonContent(
  *             type="object",
- *             @OA\Property(property="customer_id", type="integer"),
- *             @OA\Property(property="order_id", type="integer"),
- *             @OA\Property(property="status", type="integer", description="1 for active, 0 for inactive")
+ *             @OA\Property(property="customer_id", type="integer", example=1),
+ *             @OA\Property(property="order_id", type="integer", example=1),
+ *             @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *             @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
  *         )
  *     ),
  *     @OA\Response(
  *         response=200,
  *         description="Cart updated successfully",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="customer_id", type="integer", example=1),
+ *             @OA\Property(property="order_id", type="integer", example=1),
+ *             @OA\Property(property="status", type="integer", example=1, description="1 for active, 0 for inactive"),
+ *             @OA\Property(property="time", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=404,
- *         description="Cart not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=404, description="Cart not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('PATCH /carts/@id', function($id) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     $data = Flight::request()->data->getData();
     Flight::json(Flight::cartService()->updateCart($id, $data));
 });
@@ -256,23 +294,14 @@ Flight::route('PATCH /carts/@id', function($id) {
  *         description="Cart ID",
  *         @OA\Schema(type="integer", format="int64")
  *     ),
- *     @OA\Response(
- *         response=200,
- *         description="Cart deleted successfully"
- *     ),
- *     @OA\Response(
- *         response=404,
- *         description="Cart not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=200, description="Cart deleted successfully"),
+ *     @OA\Response(response=404, description="Cart not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('DELETE /carts/@id', function($id) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::cartService()->deleteCart($id);
 });
+
 ?>

@@ -8,19 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.min.css">
     <title>Ultimate Goalkeeping</title>
+
+    <script src="./Utils/constants.js"></script>
+    <script src="./Utils/utils.js"></script>
+    <script src="./Utils/restClient.js"></script>
+    <script src="./Services/userService.js"></script>
 </head>
 <body>
     <nav>
         <div class="navbar">
             <a href="#page1" class="navbar-brand">Ultimate Goalkeeping</a>
             <ul class="navbar-nav">
-                <li class="nav-item"><a href="#page1" class="nav-link" id="1">Home</a></li>
-                <li class="nav-item"><a href="#page2" class="nav-link" id="2">Shop</a></li>
-                <li class="nav-item"><a href="#page3" class="nav-link" id="3">Cart</a></li>
-                <li class="nav-item"><a href="#page4" class="nav-link" id="4">Login</a></li>
-                <li class="nav-item"><a href="#page5" class="nav-link" id="5">Register</a></li>
-                <li class="nav-item"><a href="#page6" class="nav-link" id="6">Contact Us</a></li>
-                <li class="nav-item"><a href="#page7" class="nav-link" id="7">Admin</a></li>
+               
             </ul>
             <button id="theme-switcher">Switch Theme</button>
         </div>
@@ -53,7 +52,13 @@
         </section>
 
         <section id="page7" data-load="admin.html">
-            <h1>Admin</h1>
+            <h1>You will be the new Wojciech Szczęsny</h1>
+            <p>
+                Goalkeeper stands alone, but never fights alone. Every save is built on courage—the courage to face the shot,
+                to rise after a mistake, and to believe again when the pressure is highest. You are the last line, the calm in chaos,
+                the one who turns doubt into confidence with a single moment of focus. Mistakes don’t define you; your response does.
+                Stay loud, stay brave, stay ready—because one save can change a match, and one moment of belief can change everything.
+            </p>
         </section>
     </main>
 
@@ -66,5 +71,9 @@
     <script src="./Assets/Js/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="./Assets/Js/cart.js"></script>
-    <script src="./Assets/Js/contact.js"></script>>
+    <script src="./Assets/Js/contact.js"></script>
+    <script src="./Services/navbarService.js"></script>
+    <script src="./Services/shopService.js"></script>
+    <script src="./Services/cartService.js"></script>
+    <script src="./Services/adminService.js"></script>
 </html>

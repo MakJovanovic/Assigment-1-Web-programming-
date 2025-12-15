@@ -1,41 +1,47 @@
 <div class="container">
-    <section id="cart-section">
-        <h2>Your Cart</h2>
+    <section id="cart-section" class="cart-card">
+        <div class="cart-header">
+            <div>
+                <p class="eyebrow">Your items</p>
+                <h2>Your Cart</h2>
+            </div>
+            <div class="cart-summary">
+                <span>Total:</span>
+                <strong>€<span id="total-amount">0.00</span></strong>
+                <button id="checkout" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
 
-        <table class="table table-hover">
-            <thead>
-                <tr class="table-secondary">
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="cart-items">
-            </tbody>
-        </table>
-
-        <div id="total">
-            <p>Total: €<span id="total-amount">0.00</span></p>
-            <button id="checkout" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cartModal">
-                Proceed to Checkout
-            </button>
+        <div class="cart-table-wrapper">
+            <table class="table table-hover" id="cart-table">
+                <thead>
+                    <tr class="table-secondary">
+                        <th>Product</th>
+                        <th class="text-end">Price</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-end">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                </tbody>
+            </table>
         </div>
     </section>
 
     <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Added to Cart</h3>
+                    <h3 class="modal-title">Thank you for your purchase!</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>These are the items you have added to your cart.</p>
+                    <p>Your order has been received. We’ll send you a confirmation email shortly.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

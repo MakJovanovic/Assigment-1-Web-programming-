@@ -7,16 +7,22 @@
  *     @OA\Response(
  *         response=200,
  *         description="List of all orders",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="address", type="string", example="123 Main Street, City"),
+ *                 @OA\Property(property="total_amount", type="number", format="float", example=199.99),
+ *                 @OA\Property(property="order_date", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /orders', function() {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::orderService()->getAllOrders());
 });
 
@@ -35,21 +41,20 @@ Flight::route('GET /orders', function() {
  *     @OA\Response(
  *         response=200,
  *         description="Order details",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="address", type="string", example="123 Main Street, City"),
+ *             @OA\Property(property="total_amount", type="number", format="float", example=199.99),
+ *             @OA\Property(property="order_date", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=404,
- *         description="Order not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=404, description="Order not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /orders/@id', function($id) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::orderService()->getOrderById($id));
 });
 
@@ -68,16 +73,22 @@ Flight::route('GET /orders/@id', function($id) {
  *     @OA\Response(
  *         response=200,
  *         description="List of orders above the specified amount",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="address", type="string", example="123 Main Street, City"),
+ *                 @OA\Property(property="total_amount", type="number", format="float", example=199.99),
+ *                 @OA\Property(property="order_date", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /orders/amount/@amount', function($amount) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::orderService()->getOrdersAboveAmount($amount));
 });
 
@@ -96,16 +107,22 @@ Flight::route('GET /orders/amount/@amount', function($amount) {
  *     @OA\Response(
  *         response=200,
  *         description="List of orders for the specified date",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="address", type="string", example="123 Main Street, City"),
+ *                 @OA\Property(property="total_amount", type="number", format="float", example=199.99),
+ *                 @OA\Property(property="order_date", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /orders/date/@date', function($date) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::json(Flight::orderService()->getOrdersByDate($date));
 });
 
@@ -124,16 +141,22 @@ Flight::route('GET /orders/date/@date', function($date) {
  *     @OA\Response(
  *         response=200,
  *         description="List of latest orders",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="address", type="string", example="123 Main Street, City"),
+ *                 @OA\Property(property="total_amount", type="number", format="float", example=199.99),
+ *                 @OA\Property(property="order_date", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /orders/latest', function() {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     $limit = Flight::request()->query->limit ?? 10;
     Flight::json(Flight::orderService()->getLatestOrders((int)$limit));
 });
@@ -147,28 +170,29 @@ Flight::route('GET /orders/latest', function() {
  *         required=true,
  *         @OA\JsonContent(
  *             type="object",
- *             @OA\Property(property="address", type="string"),
- *             @OA\Property(property="total_amount", type="number", format="float")
+ *             required={"address", "total_amount"},
+ *             @OA\Property(property="address", type="string", example="123 Main Street, City"),
+ *             @OA\Property(property="total_amount", type="number", format="float", example=199.99),
+ *             @OA\Property(property="order_date", type="string", format="date-time", example="2024-01-15 10:30:00")
  *         )
  *     ),
  *     @OA\Response(
  *         response=200,
  *         description="Order created successfully",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="address", type="string", example="123 Main Street, City"),
+ *             @OA\Property(property="total_amount", type="number", format="float", example=199.99),
+ *             @OA\Property(property="order_date", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=400,
- *         description="Invalid input",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=400, description="Invalid input"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('POST /orders', function() {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     $data = Flight::request()->data->getData();
     Flight::json(Flight::orderService()->addOrder($data));
 });
@@ -189,28 +213,28 @@ Flight::route('POST /orders', function() {
  *         required=true,
  *         @OA\JsonContent(
  *             type="object",
- *             @OA\Property(property="address", type="string"),
- *             @OA\Property(property="total_amount", type="number", format="float")
+ *             @OA\Property(property="address", type="string", example="123 Main Street, City"),
+ *             @OA\Property(property="total_amount", type="number", format="float", example=199.99),
+ *             @OA\Property(property="order_date", type="string", format="date-time", example="2024-01-15 10:30:00")
  *         )
  *     ),
  *     @OA\Response(
  *         response=200,
  *         description="Order updated successfully",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="address", type="string", example="123 Main Street, City"),
+ *             @OA\Property(property="total_amount", type="number", format="float", example=199.99),
+ *             @OA\Property(property="order_date", type="string", format="date-time", example="2024-01-15 10:30:00")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=404,
- *         description="Order not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=404, description="Order not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('PATCH /orders/@id', function($id) {
+    Flight::auth_middleware()->authorizeRole(Roles::ADMIN);
     $data = Flight::request()->data->getData();
     Flight::json(Flight::orderService()->updateOrder($id, $data));
 });
@@ -227,23 +251,14 @@ Flight::route('PATCH /orders/@id', function($id) {
  *         description="Order ID",
  *         @OA\Schema(type="integer", format="int64")
  *     ),
- *     @OA\Response(
- *         response=200,
- *         description="Order deleted successfully"
- *     ),
- *     @OA\Response(
- *         response=404,
- *         description="Order not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=200, description="Order deleted successfully"),
+ *     @OA\Response(response=404, description="Order not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('DELETE /orders/@id', function($id) {
+    Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
     Flight::orderService()->deleteOrder($id);
 });
+
 ?>

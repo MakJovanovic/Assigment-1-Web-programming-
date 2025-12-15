@@ -6,7 +6,7 @@ error_reporting(E_ALL ^ (E_NOTICE | E_DEPRECATED));
 
 class Config {
     public static function DB_NAME() {
-        return Config::get_env("DB_NAME", "web");
+        return Config::get_env("DB_NAME", "shop1");
     }
     public static function DB_PORT() {
         return Config::get_env("DB_PORT", "3306");
@@ -21,9 +21,11 @@ class Config {
         return Config::get_env("DB_HOST", "localhost");
     }
     public static function JWT_SECRET() {
-        return Config::get_env("DB_HOST", '');
+          return 'zeljo';
     }
     public static function get_env($name, $default){
         return isset($_ENV[$name]) && trim($_ENV[$name]) != "" ? $_ENV[$name] : $default;
     }
+
+
 }
