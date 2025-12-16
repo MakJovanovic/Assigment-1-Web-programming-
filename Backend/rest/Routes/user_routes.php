@@ -7,17 +7,24 @@
  *     @OA\Response(
  *         response=200,
  *         description="List of all users",
- *         @OA\JsonContent(type="array")
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="username", type="string", example="johndoe"),
+ *                 @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+ *                 @OA\Property(property="phone", type="string", example="061111111"),
+ *                 @OA\Property(property="role", type="string", enum={"admin", "user"}, example="user")
+ *             )
+ *         )
  *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /users', function() {
-    Flight::json(Flight::userService()->getAllUsers());
+   Flight::auth_middleware()->authorizeRole(Roles::ADMIN);
+   Flight::json(Flight::userService()->getAllUsers());
 });
 
 /**
@@ -35,22 +42,22 @@ Flight::route('GET /users', function() {
  *     @OA\Response(
  *         response=200,
  *         description="User details",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="username", type="string", example="johndoe"),
+ *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+ *             @OA\Property(property="phone", type="string", example="061111111"),
+ *             @OA\Property(property="role", type="string", enum={"admin", "user"}, example="user")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=404,
- *         description="User not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=404, description="User not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /users/@id', function($id) {
-    Flight::json(Flight::userService()->getUserById($id));
+   Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
+   Flight::json(Flight::userService()->getUserById($id));
 });
 
 /**
@@ -68,22 +75,22 @@ Flight::route('GET /users/@id', function($id) {
  *     @OA\Response(
  *         response=200,
  *         description="User details",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="username", type="string", example="johndoe"),
+ *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+ *             @OA\Property(property="phone", type="string", example="061111111"),
+ *             @OA\Property(property="role", type="string", enum={"admin", "user"}, example="user")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=404,
- *         description="User not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=404, description="User not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('GET /users/username/@username', function($username) {
-    Flight::json(Flight::userService()->getUserByUsername($username));
+   Flight::auth_middleware()->authorizeRoles([Roles::USER, Roles::ADMIN]);
+   Flight::json(Flight::userService()->getUserByUsername($username));
 });
 
 /**
@@ -95,32 +102,34 @@ Flight::route('GET /users/username/@username', function($username) {
  *         required=true,
  *         @OA\JsonContent(
  *             type="object",
- *             @OA\Property(property="username", type="string"),
- *             @OA\Property(property="password", type="string"),
- *             @OA\Property(property="email", type="string", format="email"),
- *             @OA\Property(property="enum", type="string", enum={"admin", "customer"})
+ *             required={"username", "email", "password"},
+ *             @OA\Property(property="username", type="string", example="johndoe"),
+ *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+ *             @OA\Property(property="password", type="string", example="securepassword123"),
+ *             @OA\Property(property="phone", type="string", example="061111111"),
+ *             @OA\Property(property="role", type="string", enum={"admin", "user"}, example="user")
  *         )
  *     ),
  *     @OA\Response(
  *         response=200,
  *         description="User created successfully",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="username", type="string", example="johndoe"),
+ *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+ *             @OA\Property(property="phone", type="string", example="061111111"),
+ *             @OA\Property(property="role", type="string", enum={"admin", "user"}, example="user")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=400,
- *         description="Invalid input",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=400, description="Invalid input"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('POST /users', function() {
-    $data = Flight::request()->data->getData();
-    Flight::json(Flight::userService()->addUser($data));
+   Flight::auth_middleware()->authorizeRole(Roles::ADMIN);
+   $data = Flight::request()->data->getData();
+   Flight::json(Flight::userService()->addUser($data));
 });
 
 /**
@@ -139,32 +148,33 @@ Flight::route('POST /users', function() {
  *         required=true,
  *         @OA\JsonContent(
  *             type="object",
- *             @OA\Property(property="username", type="string"),
- *             @OA\Property(property="password", type="string"),
- *             @OA\Property(property="email", type="string", format="email"),
- *             @OA\Property(property="enum", type="string", enum={"admin", "customer"})
+ *             @OA\Property(property="username", type="string", example="johndoe"),
+ *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+ *             @OA\Property(property="password", type="string", example="newpassword123"),
+ *             @OA\Property(property="phone", type="string", example="061111111"),
+ *             @OA\Property(property="role", type="string", enum={"admin", "user"}, example="user")
  *         )
  *     ),
  *     @OA\Response(
  *         response=200,
  *         description="User updated successfully",
- *         @OA\JsonContent(type="object")
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="id", type="integer", example=1),
+ *             @OA\Property(property="username", type="string", example="johndoe"),
+ *             @OA\Property(property="email", type="string", format="email", example="john@example.com"),
+ *             @OA\Property(property="phone", type="string", example="061111111"),
+ *             @OA\Property(property="role", type="string", enum={"admin", "user"}, example="user")
+ *         )
  *     ),
- *     @OA\Response(
- *         response=404,
- *         description="User not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=404, description="User not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('PATCH /users/@id', function($id) {
-    $data = Flight::request()->data->getData();
-    Flight::json(Flight::userService()->updateUser($id, $data));
+   Flight::auth_middleware()->authorizeRole(Roles::ADMIN);
+   $data = Flight::request()->data->getData();
+   Flight::json(Flight::userService()->updateUser($id, $data));
 });
 
 /**
@@ -179,23 +189,14 @@ Flight::route('PATCH /users/@id', function($id) {
  *         description="User ID",
  *         @OA\Schema(type="integer", format="int64")
  *     ),
- *     @OA\Response(
- *         response=200,
- *         description="User deleted successfully"
- *     ),
- *     @OA\Response(
- *         response=404,
- *         description="User not found",
- *         @OA\JsonContent(type="object")
- *     ),
- *     @OA\Response(
- *         response=500,
- *         description="Server error",
- *         @OA\JsonContent(type="object")
- *     )
+ *     @OA\Response(response=200, description="User deleted successfully"),
+ *     @OA\Response(response=404, description="User not found"),
+ *     @OA\Response(response=500, description="Server error")
  * )
  */
 Flight::route('DELETE /users/@id', function($id) {
-    Flight::userService()->deleteUser($id);
+   Flight::auth_middleware()->authorizeRole(Roles::ADMIN);
+   Flight::userService()->deleteUser($id);
 });
+
 ?>

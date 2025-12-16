@@ -50,6 +50,7 @@ $(document).ready(function() {
             });
             js_navbar("2");
             console.log("About page ready!");
+            window.shopServiceProducts.init();
         }
     });
     
@@ -62,6 +63,7 @@ $(document).ready(function() {
             js_cart();
             js_navbar("3");
             console.log("About page ready!");
+            window.cartServiceProducts.init();
         }
     });
     
@@ -70,9 +72,6 @@ $(document).ready(function() {
         onReady: function() {
             console.log("About page created!");
             loadCSS('./Assets/Css/login.css');
-            loadJS('./Assets/Js/login.js', function() {
-                console.log('About JS loaded');
-            });
             js_navbar("4");
         }
     });
@@ -82,9 +81,6 @@ $(document).ready(function() {
         onReady: function() {
             console.log("About page created!");
             loadCSS('./Assets/Css/register.css');
-            loadJS('./Assets/Js/register.js', function() {
-                console.log('About JS loaded');
-            });
             js_navbar("5")
         }
     });
@@ -115,7 +111,8 @@ $(document).ready(function() {
                 console.log('About JS loaded');
             });
             js_navbar("7");
-            contact_form();
+            contact_form(); 
+            window.adminServiceProducts.init();
         }
     });
     app.run();

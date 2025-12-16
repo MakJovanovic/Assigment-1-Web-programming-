@@ -14,7 +14,7 @@
 
 /**
  * @OA\Server(
- *      url="http://localhost/ass/ass1/backend",
+ *      url="http://localhost/kamen4/kamen4/backend",
  *      description="Local development server"
  * )
  */
