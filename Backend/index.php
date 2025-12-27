@@ -1,9 +1,9 @@
 <?php
 //For handeling OPTIONS request on local host
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-header("Access-Control-Allow-Methods: POST, DELETE, OPTIONS");
+header("Access-Controle-Allow-Origin: *");
+header("Access-Controle-Allow-Headers: Content-Type, Authorization");
+header("Access-Controle-Allow-Methods: POST, DELETE, OPTIONS");
 
 if($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     return 0;
