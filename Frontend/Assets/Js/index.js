@@ -44,7 +44,7 @@ $(document).ready(function() {
         view: "page2",
         onReady: function() {
             console.log("test312");
-            loadCSS('./Assets/Css/shop.css');
+            loadCSS('./Assets/Css/Shop.css');
             loadJS('./Assets/Js/shop.js', function() {
                 console.log('test1231');
             });
